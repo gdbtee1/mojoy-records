@@ -1,0 +1,1135 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --cream: #f3eadc;
+  --cream-light: #faf6ef;
+  --brown: #4e2f22;
+  --brown-dark: #21130e;
+  --brown-mid: #74503f;
+  --gold: #aa8956;
+  --black: #11100f;
+  --white: #fffdf9;
+  --border: rgba(25, 16, 12, 0.25);
+
+  font-family: 'Inter', sans-serif;
+  background: var(--cream-light);
+  color: var(--black);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--cream-light);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+.site-shell {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+
+.site-header {
+  background: var(--cream-light);
+  border-bottom: 1px solid var(--black);
+}
+
+.header-top {
+  min-height: 108px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 18px clamp(22px, 4vw, 65px);
+}
+
+.mojoy-logo {
+  justify-self: start;
+  line-height: 0.85;
+}
+
+.mojoy-logo strong,
+.footer-logo strong {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: 35px;
+  letter-spacing: 0.02em;
+}
+
+.mojoy-logo span,
+.footer-logo span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+}
+
+.header-center-copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.order-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 5px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.desktop-nav {
+  border-top: 1px solid var(--border);
+  padding: 20px 20px 23px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(12px, 1.3vw, 18px);
+}
+
+.desktop-nav a {
+  transition: opacity 0.2s ease;
+}
+
+.desktop-nav a:hover {
+  opacity: 0.5;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+/* HERO */
+
+.campaign-hero {
+  position: relative;
+  height: min(720px, calc(100vh - 160px));
+  min-height: 570px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--black);
+  background: var(--brown-dark);
+}
+
+.campaign-image,
+.campaign-image img,
+.campaign-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.campaign-image img {
+  object-fit: cover;
+}
+
+.campaign-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(20, 11, 8, 0.88) 0%,
+      rgba(20, 11, 8, 0.67) 42%,
+      rgba(20, 11, 8, 0.16) 74%,
+      rgba(20, 11, 8, 0.25) 100%
+    );
+}
+
+.campaign-content {
+  position: relative;
+  z-index: 2;
+  color: var(--cream-light);
+  height: 100%;
+  width: min(750px, 70%);
+  padding: clamp(45px, 6vw, 90px) clamp(25px, 5vw, 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.campaign-content > span,
+.promo-content > span,
+.legacy-copy > span,
+.physical-store-copy > span,
+.booking-strip span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.campaign-content h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(68px, 8vw, 125px);
+  line-height: 0.88;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 20px 0 25px;
+}
+
+.campaign-content p {
+  max-width: 530px;
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0 0 30px;
+}
+
+.campaign-button {
+  width: fit-content;
+  border: 1px solid currentColor;
+  padding: 15px 18px;
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.campaign-stamp {
+  position: absolute;
+  z-index: 3;
+  right: clamp(25px, 5vw, 75px);
+  bottom: 45px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--cream);
+  border-radius: 50%;
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.campaign-stamp strong {
+  font-family: 'Anton', sans-serif;
+  font-size: 55px;
+  line-height: 0.9;
+}
+
+.campaign-stamp span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+
+.campaign-stamp small {
+  margin-top: 4px;
+  font-size: 7px;
+  letter-spacing: 0.16em;
+}
+
+/* SHARED SECTION HEADERS */
+
+.release-section,
+.catalog-section {
+  background: var(--cream-light);
+  padding: clamp(55px, 6vw, 90px) clamp(22px, 4vw, 65px);
+  border-bottom: 1px solid var(--black);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: clamp(40px, 5vw, 70px);
+}
+
+.section-kicker {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  margin-bottom: 9px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: clamp(55px, 6vw, 88px);
+  line-height: 0.9;
+}
+
+.section-view-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+/* RELEASES */
+
+.release-grid,
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 42px);
+}
+
+.release-card {
+  min-width: 0;
+}
+
+.release-card-image {
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.release-card-image img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.release-card:hover img {
+  transform: scale(1.035);
+}
+
+.release-card-action {
+  position: absolute;
+  inset: auto 14px 14px auto;
+  padding: 10px 12px;
+  background: var(--cream-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.25s ease;
+}
+
+.release-card:hover .release-card-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.release-card-meta {
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.release-card-meta > span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  opacity: 0.45;
+}
+
+.release-card-meta strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.release-card-meta h3 {
+  margin: 0;
+  font-size: clamp(17px, 1.4vw, 23px);
+  line-height: 1.18;
+}
+
+.release-card-meta p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  margin-top: 9px;
+  opacity: 0.55;
+}
+
+/* FEATURED PROMOS */
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--black);
+}
+
+.promo-panel {
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+}
+
+.promo-panel:first-child {
+  border-right: 1px solid var(--black);
+}
+
+.promo-panel > img,
+.promo-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.promo-panel > img {
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.promo-panel:hover > img {
+  transform: scale(1.03);
+}
+
+.promo-overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(18, 10, 7, 0.83),
+    rgba(18, 10, 7, 0.08) 65%
+  );
+}
+
+.promo-content {
+  position: absolute;
+  z-index: 2;
+  left: clamp(24px, 4vw, 60px);
+  bottom: clamp(28px, 4vw, 55px);
+}
+
+.promo-content h2 {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: clamp(58px, 6vw, 96px);
+  line-height: 0.9;
+  margin: 13px 0 10px;
+}
+
+.promo-content p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+}
+
+.promo-cta {
+  width: fit-content;
+  margin-top: 25px;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  border: 1px solid var(--white);
+  padding: 13px 15px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* CATALOG */
+
+.catalog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 60px;
+}
+
+/* LEGACY */
+
+.legacy-banner {
+  position: relative;
+  min-height: 610px;
+  background: var(--brown);
+  color: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  overflow: hidden;
+  border-bottom: 1px solid var(--black);
+}
+
+.legacy-number {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(300px, 40vw, 650px);
+  line-height: 0.78;
+  opacity: 0.1;
+  position: absolute;
+  left: -10px;
+  bottom: -40px;
+}
+
+.legacy-copy {
+  position: relative;
+  z-index: 2;
+  grid-column: 2;
+  align-self: center;
+  padding: 70px clamp(30px, 6vw, 95px);
+}
+
+.legacy-copy h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(65px, 7vw, 110px);
+  line-height: 0.91;
+  font-weight: 400;
+  margin: 15px 0 25px;
+}
+
+.legacy-copy p {
+  font-size: 16px;
+  max-width: 530px;
+  line-height: 1.65;
+}
+
+.legacy-copy a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  margin-top: 28px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* PHYSICAL */
+
+.physical-store {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 650px;
+  border-bottom: 1px solid var(--black);
+}
+
+.physical-store-copy {
+  background: var(--cream);
+  padding: clamp(55px, 7vw, 105px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.physical-store-copy h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(75px, 8vw, 125px);
+  line-height: 0.87;
+  font-weight: 400;
+  margin: 18px 0 25px;
+}
+
+.physical-store-copy p {
+  max-width: 460px;
+  line-height: 1.6;
+}
+
+.outlined-button {
+  width: fit-content;
+  margin-top: 27px;
+  border: 1px solid var(--black);
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+}
+
+.physical-store-image {
+  min-height: 600px;
+}
+
+.physical-store-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BOOKING */
+
+.booking-strip {
+  min-height: 300px;
+  padding: 55px clamp(22px, 4vw, 65px);
+  background: var(--black);
+  color: var(--cream-light);
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr auto;
+  gap: 45px;
+  align-items: end;
+}
+
+.booking-strip h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(60px, 7vw, 105px);
+  line-height: 0.9;
+  font-weight: 400;
+  margin: 12px 0 0;
+}
+
+.booking-strip p {
+  line-height: 1.55;
+  margin: 0;
+}
+
+.booking-strip > a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 7px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* FOOTER */
+
+.site-footer {
+  background: var(--cream-light);
+  padding: 65px clamp(22px, 4vw, 65px) 25px;
+}
+
+.footer-logo strong {
+  font-size: clamp(90px, 15vw, 220px);
+  line-height: 0.85;
+}
+
+.footer-logo span {
+  font-size: 10px;
+}
+
+.footer-columns {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  gap: 60px;
+}
+
+.footer-columns div {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer-columns span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  opacity: 0.5;
+  margin-bottom: 7px;
+}
+
+.footer-columns a {
+  font-size: 14px;
+}
+
+.footer-bottom {
+  margin-top: 70px;
+  padding-top: 18px;
+  border-top: 1px solid var(--black);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+}
+
+/* BOOKING PAGE COMPATIBILITY */
+
+.inquiry-page {
+  min-height: 100vh;
+  background: var(--cream-light);
+}
+
+.inquiry-nav {
+  min-height: 90px;
+  border-bottom: 1px solid var(--black);
+  padding: 20px clamp(22px, 4vw, 65px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inquiry-nav .brand {
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+}
+
+.inquiry-nav .brand span {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+}
+
+.return-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.inquiry-hero {
+  padding: 80px clamp(22px, 4vw, 65px);
+  border-bottom: 1px solid var(--black);
+}
+
+.inquiry-index,
+.small-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.inquiry-heading h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(75px, 10vw, 150px);
+  line-height: 0.88;
+  font-weight: 400;
+  margin: 20px 0 30px;
+}
+
+.inquiry-heading h1 em {
+  font-style: normal;
+}
+
+.inquiry-side-copy {
+  max-width: 550px;
+}
+
+.inquiry-side-copy p {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.inquiry-body {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 260px;
+  gap: 55px;
+  padding: 75px clamp(22px, 4vw, 65px);
+}
+
+.inquiry-selector > span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+}
+
+.selector-options {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.selector-options button {
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.selector-options button:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.mojoy-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.mojoy-form input,
+.mojoy-form select,
+.mojoy-form textarea {
+  border: 0;
+  border-bottom: 1px solid var(--black);
+  background: transparent;
+  padding: 13px 0;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+}
+
+.message-field {
+  margin-top: 20px;
+}
+
+.submit-inquiry {
+  width: 100%;
+  margin-top: 30px;
+  border: 0;
+  background: var(--black);
+  color: var(--cream-light);
+  padding: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.physical-order-note h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 48px;
+  line-height: 0.95;
+}
+
+.physical-order-note p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.inquiry-footer {
+  background: var(--black);
+  color: var(--cream-light);
+  padding: 50px clamp(22px, 4vw, 65px);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .header-center-copy {
+    display: none;
+  }
+
+  .header-top {
+    grid-template-columns: 1fr auto;
+  }
+
+  .release-grid,
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .campaign-content {
+    width: 85%;
+  }
+
+  .promo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-panel:first-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--black);
+  }
+
+  .promo-panel {
+    min-height: 540px;
+  }
+
+  .legacy-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-copy {
+    grid-column: 1;
+    padding-left: 45%;
+  }
+
+  .physical-store {
+    grid-template-columns: 1fr;
+  }
+
+  .physical-store-image {
+    min-height: 520px;
+  }
+
+  .booking-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .booking-strip > a {
+    grid-column: 1 / 3;
+    width: fit-content;
+  }
+
+  .inquiry-body {
+    grid-template-columns: 180px 1fr;
+  }
+
+  .physical-order-note {
+    grid-column: 2;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .header-top {
+    min-height: 78px;
+    padding: 13px 18px;
+  }
+
+  .mojoy-logo strong {
+    font-size: 29px;
+  }
+
+  .order-link {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 18px 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobile-nav a {
+    font-family: 'Anton', sans-serif;
+    font-size: 38px;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  .campaign-hero {
+    height: 650px;
+    min-height: 650px;
+  }
+
+  .campaign-shade {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(18, 10, 7, 0.92),
+        rgba(18, 10, 7, 0.15) 80%
+      );
+  }
+
+  .campaign-content {
+    width: 100%;
+    padding: 40px 18px;
+    justify-content: flex-end;
+  }
+
+  .campaign-content h1 {
+    font-size: clamp(58px, 17vw, 82px);
+  }
+
+  .campaign-content p {
+    font-size: 14px;
+    max-width: 390px;
+  }
+
+  .campaign-stamp {
+    width: 100px;
+    height: 100px;
+    top: 25px;
+    right: 18px;
+    bottom: auto;
+  }
+
+  .campaign-stamp strong {
+    font-size: 38px;
+  }
+
+  .campaign-stamp span {
+    font-size: 9px;
+  }
+
+  .release-section,
+  .catalog-section {
+    padding: 50px 18px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(49px, 15vw, 72px);
+  }
+
+  .section-view-link {
+    font-size: 8px;
+    margin-top: 8px;
+  }
+
+  .release-grid,
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 12px;
+  }
+
+  .release-card-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .release-card-meta > span {
+    display: none;
+  }
+
+  .release-card-meta strong {
+    font-size: 11px;
+  }
+
+  .release-card-meta h3 {
+    font-size: 15px;
+  }
+
+  .release-card-action {
+    display: none;
+  }
+
+  .promo-panel {
+    min-height: 500px;
+  }
+
+  .promo-content {
+    left: 18px;
+    bottom: 25px;
+  }
+
+  .promo-content h2 {
+    font-size: clamp(55px, 16vw, 80px);
+  }
+
+  .legacy-banner {
+    min-height: 600px;
+  }
+
+  .legacy-number {
+    font-size: 400px;
+    left: -60px;
+  }
+
+  .legacy-copy {
+    padding: 65px 18px;
+    align-self: end;
+  }
+
+  .legacy-copy h2 {
+    font-size: clamp(58px, 17vw, 82px);
+  }
+
+  .physical-store-copy {
+    padding: 60px 18px;
+  }
+
+  .physical-store-copy h2 {
+    font-size: clamp(68px, 20vw, 95px);
+  }
+
+  .physical-store-image {
+    min-height: 430px;
+  }
+
+  .booking-strip {
+    grid-template-columns: 1fr;
+    padding: 55px 18px;
+  }
+
+  .booking-strip h2 {
+    font-size: clamp(58px, 17vw, 85px);
+  }
+
+  .booking-strip > a {
+    grid-column: auto;
+  }
+
+  .site-footer {
+    padding: 55px 18px 22px;
+  }
+
+  .footer-logo strong {
+    font-size: clamp(78px, 23vw, 120px);
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 45px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .inquiry-nav {
+    min-height: 78px;
+    padding: 15px 18px;
+  }
+
+  .inquiry-hero {
+    padding: 60px 18px;
+  }
+
+  .inquiry-heading h1 {
+    font-size: clamp(58px, 17vw, 85px);
+  }
+
+  .inquiry-body {
+    grid-template-columns: 1fr;
+    gap: 55px;
+    padding: 55px 18px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .physical-order-note {
+    grid-column: auto;
+  }
+
+  .inquiry-footer {
+    padding: 40px 18px;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
