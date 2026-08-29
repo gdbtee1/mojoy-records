@@ -1510,7 +1510,7 @@ button {
   width: 92px;
   height: 92px;
 
-  background: #000;
+  background: var(--brown-dark);
   overflow: hidden;
 
   text-decoration: none;
