@@ -7,6 +7,9 @@ import {
   X,
 } from 'lucide-react'
 
+const logoSrc =
+  `${import.meta.env.BASE_URL}images/branding/mojoy-logo.png`
+
 function Navbar({ active = '' }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const navigate = useNavigate()
@@ -25,7 +28,7 @@ function Navbar({ active = '' }) {
           block: 'start',
         })
       }
-    }, 100)
+    }, 150)
   }
 
   const navItemClass = (name) =>
@@ -38,9 +41,13 @@ function Navbar({ active = '' }) {
           className="shared-logo"
           to="/"
           onClick={() => setMenuOpen(false)}
+          aria-label="Mojoy Records home"
         >
-          <strong>MOJOY</strong>
-          <span>RECORDS</span>
+          <img
+            src={logoSrc}
+            alt="Mojoy Records"
+            className="shared-logo-image"
+          />
         </Link>
 
         <div className="shared-navbar-tagline">
@@ -58,8 +65,15 @@ function Navbar({ active = '' }) {
 
           <button
             className="shared-menu-toggle"
-            onClick={() => setMenuOpen((current) => !current)}
-            aria-label="Toggle navigation"
+            onClick={() =>
+              setMenuOpen((current) => !current)
+            }
+            aria-label={
+              menuOpen
+                ? 'Close navigation'
+                : 'Open navigation'
+            }
+            aria-expanded={menuOpen}
           >
             {menuOpen ? (
               <X size={24} />
@@ -73,21 +87,27 @@ function Navbar({ active = '' }) {
       <nav className="shared-desktop-nav">
         <button
           className={navItemClass('music')}
-          onClick={() => goHomeSection('releases')}
+          onClick={() =>
+            goHomeSection('releases')
+          }
         >
           [ MUSIC ]
         </button>
 
         <button
           className={navItemClass('catalog')}
-          onClick={() => goHomeSection('catalog')}
+          onClick={() =>
+            goHomeSection('catalog')
+          }
         >
           [ CATALOG ]
         </button>
 
         <button
           className={navItemClass('physical')}
-          onClick={() => goHomeSection('physical')}
+          onClick={() =>
+            goHomeSection('physical')
+          }
         >
           [ PHYSICAL ]
         </button>
@@ -123,37 +143,62 @@ function Navbar({ active = '' }) {
               opacity: 0,
               height: 0,
             }}
+            transition={{
+              duration: 0.28,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
             <button
-              onClick={() => goHomeSection('releases')}
+              onClick={() =>
+                goHomeSection('releases')
+              }
             >
               Music
             </button>
 
             <button
-              onClick={() => goHomeSection('catalog')}
+              onClick={() =>
+                goHomeSection('catalog')
+              }
             >
               Catalog
             </button>
 
             <button
-              onClick={() => goHomeSection('physical')}
+              onClick={() =>
+                goHomeSection('physical')
+              }
             >
               Physical
             </button>
 
             <Link
               to="/about"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             >
               About
             </Link>
 
             <Link
               to="/booking"
-              onClick={() => setMenuOpen(false)}
+              onClick={() =>
+                setMenuOpen(false)
+              }
             >
               Booking
+            </Link>
+
+            <Link
+              className="shared-mobile-order"
+              to="/booking"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+            >
+              <ShoppingBag size={18} />
+              Order CDs
             </Link>
           </motion.nav>
         )}

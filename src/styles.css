@@ -1366,3 +1366,460 @@ button {
   text-align: left;
   width: fit-content;
 }
+/* ========================================
+   OFFICIAL MOJOY LOGO OVERRIDE
+======================================== */
+
+.shared-logo {
+  justify-self: start;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 170px;
+  height: 72px;
+
+  overflow: hidden;
+
+  line-height: normal;
+}
+
+.shared-logo-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.72);
+
+  transform-origin: center;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .shared-logo {
+    width: 132px;
+    height: 56px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.72);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .shared-logo {
+    width: 108px;
+    height: 46px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.72);
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 380px) {
+  .shared-logo {
+    width: 94px;
+    height: 42px;
+  }
+}
+/* ========================================
+   MOJOY LOGO — FINAL OVERRIDE
+======================================== */
+
+.shared-logo {
+  justify-self: start;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 190px;
+  height: 76px;
+
+  overflow: hidden;
+}
+
+.shared-logo-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  transform: scale(1.22);
+
+  transform-origin: center;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .shared-logo {
+    width: 145px;
+    height: 58px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.18);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .shared-logo {
+    width: 118px;
+    height: 48px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.15);
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 380px) {
+  .shared-logo {
+    width: 105px;
+    height: 44px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.12);
+  }
+}
+/* ========================================
+   MOJOY LOGO — EMBEDDED BADGE
+======================================== */
+
+.shared-logo {
+  justify-self: start;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 92px;
+  height: 92px;
+
+  background: #000;
+  overflow: hidden;
+
+  text-decoration: none;
+}
+
+.shared-logo-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.12);
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .shared-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.1);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .shared-logo {
+    width: 58px;
+    height: 58px;
+  }
+
+  .shared-logo-image {
+    transform: scale(1.08);
+  }
+}
+
+/* VERY SMALL PHONES */
+@media (max-width: 380px) {
+  .shared-logo {
+    width: 52px;
+    height: 52px;
+  }
+}
+@media (max-width: 600px) {
+  .shared-navbar-top {
+    min-height: 76px;
+    padding: 9px 16px;
+  }
+
+  .shared-logo {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+  }
+}
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 430px) {
+  .gallery-heading {
+    padding:
+      0
+      14px;
+  }
+
+  .rotating-gallery {
+    padding:
+      0
+      14px;
+  }
+
+  .gallery-featured {
+    height: 125vw;
+
+    min-height: 390px;
+  }
+}
+/* ========================================
+   MOJOY ANIMATED PHOTO WALL
+======================================== */
+
+.gallery-section {
+  padding:
+    clamp(65px, 7vw, 110px)
+    clamp(22px, 4vw, 65px);
+
+  background: var(--cream-light);
+  border-bottom: 1px solid var(--black);
+  overflow: hidden;
+}
+
+.gallery-heading {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  align-items: end;
+  gap: 60px;
+
+  margin-bottom: clamp(40px, 5vw, 70px);
+}
+
+.gallery-heading > div > span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+.gallery-heading h2 {
+  margin: 0;
+
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(68px, 8vw, 120px);
+  font-weight: 400;
+  line-height: 0.87;
+}
+
+.gallery-heading p {
+  max-width: 340px;
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* DESKTOP */
+
+.mojoy-photo-wall {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, clamp(280px, 28vw, 410px));
+
+  gap: 8px;
+}
+
+.mojoy-photo-cell {
+  position: relative;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  background: var(--brown-dark);
+}
+
+.mojoy-photo-cell img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 0.55s ease,
+    filter 0.4s ease;
+}
+
+.mojoy-photo-cell:hover img {
+  transform: scale(1.04);
+}
+
+.mojoy-photo-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 16, 15, 0) 55%,
+      rgba(17, 16, 15, 0.34) 100%
+    );
+}
+
+.mojoy-photo-index {
+  position: absolute;
+
+  z-index: 3;
+
+  right: 10px;
+  bottom: 10px;
+
+  padding: 8px 10px;
+
+  background: rgba(17, 16, 15, 0.76);
+  color: var(--cream-light);
+
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+/* slightly varied crops without changing layout */
+
+.mojoy-photo-cell-1 img {
+  object-position: center center;
+}
+
+.mojoy-photo-cell-2 img {
+  object-position: center 28%;
+}
+
+.mojoy-photo-cell-3 img {
+  object-position: center 35%;
+}
+
+.mojoy-photo-cell-4 img {
+  object-position: center center;
+}
+
+.mojoy-photo-cell-5 img {
+  object-position: center 30%;
+}
+
+.mojoy-photo-cell-6 img {
+  object-position: center center;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .gallery-heading {
+    grid-template-columns: 1fr 280px;
+    gap: 35px;
+  }
+
+  .mojoy-photo-wall {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, clamp(230px, 32vw, 330px));
+
+    gap: 7px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .gallery-section {
+    padding:
+      55px
+      14px;
+  }
+
+  .gallery-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
+
+    margin-bottom: 28px;
+  }
+
+  .gallery-heading h2 {
+    font-size: clamp(58px, 18vw, 82px);
+  }
+
+  .gallery-heading p {
+    max-width: 390px;
+
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .mojoy-photo-wall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, clamp(190px, 58vw, 280px));
+
+    gap: 6px;
+  }
+
+  .mojoy-photo-index {
+    right: 7px;
+    bottom: 7px;
+
+    padding: 6px 8px;
+
+    font-size: 7px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 430px) {
+  .gallery-section {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .mojoy-photo-wall {
+    grid-template-rows: repeat(3, clamp(170px, 60vw, 250px));
+
+    gap: 5px;
+  }
+}

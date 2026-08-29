@@ -1,11 +1,24 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import {
+  AnimatePresence,
+  motion,
+} from 'framer-motion'
+import {
+  useEffect,
+  useState,
+} from 'react'
 import {
   ArrowRight,
   ArrowUpRight,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import '../styles.css'
+
+const releaseImage = (filename) =>
+  `${import.meta.env.BASE_URL}images/releases/${filename}`
+
+const galleryImage = (filename) =>
+  `${import.meta.env.BASE_URL}images/gallery/${filename}`
 
 const releases = [
   {
@@ -15,59 +28,62 @@ const releases = [
     type: 'Album',
     year: '2026',
     link: 'https://unitedmasters.com/m/sunrise-lake-view',
-    image:
-      'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=90',
+    image: releaseImage('sunrise-lake-view.jpg'),
   },
   {
     id: '02',
-    title: 'Catalog Release II',
-    artist: 'Mojoy Records',
-    type: 'Release',
+    title: 'Old School',
+    artist: 'Phillip Brooks',
+    type: 'Album',
     year: '',
     link: 'https://unitedmasters.com/m/61d345766ac7de52bcafa8a0',
-    image:
-      'https://images.unsplash.com/photo-1619983081563-430f63602796?auto=format&fit=crop&w=1200&q=90',
+    image: releaseImage('old-school.jpg'),
   },
   {
     id: '03',
-    title: 'Catalog Release III',
-    artist: 'Mojoy Records',
-    type: 'Release',
+    title: 'Table For 2',
+    artist: 'Phillip Brooks',
+    type: 'Album',
     year: '',
     link: 'https://unitedmasters.com/m/616deb8383332608d2f4ceca',
-    image:
-      'https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?auto=format&fit=crop&w=1200&q=90',
+    image: releaseImage('table-for-2.jpg'),
   },
   {
     id: '04',
-    title: 'Catalog Release IV',
-    artist: 'Mojoy Records',
-    type: 'Release',
+    title: 'Last Flight Out',
+    artist: 'Phillip Brooks',
+    type: 'Album',
     year: '',
     link: 'https://unitedmasters.com/m/6138fa516b55ac78412c4c34',
-    image:
-      'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=90',
+    image: releaseImage('last-flight-out.jpg'),
   },
   {
     id: '05',
-    title: 'Catalog Release V',
-    artist: 'Mojoy Records',
-    type: 'Release',
+    title: 'Alive in Praise 2',
+    artist: 'Bishop P.A. Brooks & The New St. Paul Tabernacle',
+    type: 'Album',
     year: '',
     link: 'https://unitedmasters.com/m/6138dd0799d5e617f836ffea',
-    image:
-      'https://images.unsplash.com/photo-1524650359799-842906ca1c06?auto=format&fit=crop&w=1200&q=90',
+    image: releaseImage('alive-in-praise-2.jpg'),
   },
   {
     id: '06',
-    title: 'Catalog Release VI',
-    artist: 'Mojoy Records',
-    type: 'Release',
+    title: 'Live in Praise',
+    artist: 'Phillip Brooks',
+    type: 'Album',
     year: '',
     link: 'https://unitedmasters.com/m/61b8bfd286f548540905db4c',
-    image:
-      'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=90',
+    image: releaseImage('live-in-praise.jpg'),
   },
+]
+
+const galleryImages = [
+  galleryImage('gallery-01.jpg'),
+  galleryImage('gallery-02.jpg'),
+  galleryImage('gallery-03.jpg'),
+  galleryImage('gallery-04.jpg'),
+  galleryImage('gallery-05.jpg'),
+  galleryImage('gallery-06.jpg'),
 ]
 
 const featured = releases[0]
@@ -112,7 +128,9 @@ function SectionHeader({
           {kicker}
         </span>
 
-        <h2>{title}</h2>
+        <h2>
+          {title}
+        </h2>
       </div>
 
       <ScrollLink
@@ -154,7 +172,7 @@ function ReleaseCard({ release }) {
       >
         <img
           src={release.image}
-          alt={release.title}
+          alt={`${release.title} by ${release.artist}`}
         />
 
         <span className="release-card-action">
@@ -164,12 +182,18 @@ function ReleaseCard({ release }) {
       </a>
 
       <div className="release-card-meta">
-        <span>{release.id}</span>
+        <span>
+          {release.id}
+        </span>
 
         <div>
-          <strong>{release.artist}</strong>
+          <strong>
+            {release.artist}
+          </strong>
 
-          <h3>{release.title}</h3>
+          <h3>
+            {release.title}
+          </h3>
 
           <p>
             {release.type}
@@ -180,6 +204,89 @@ function ReleaseCard({ release }) {
         </div>
       </div>
     </motion.article>
+  )
+}
+
+/* ========================================
+   ANIMATED 6-PHOTO WALL
+======================================== */
+
+function AnimatedPhotoWall({ images }) {
+  const [rotation, setRotation] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotation((current) =>
+        (current + 1) % images.length
+      )
+    }, 3500)
+
+    return () => clearInterval(interval)
+  }, [images.length])
+
+  const imagesForWall = images.map(
+    (_, index) =>
+      images[
+        (index + rotation) %
+          images.length
+      ]
+  )
+
+  return (
+    <div className="mojoy-photo-wall">
+      {imagesForWall.map((image, index) => (
+        <motion.div
+          key={`gallery-cell-${index}`}
+          className={`mojoy-photo-cell mojoy-photo-cell-${index + 1}`}
+          initial={{
+            opacity: 0,
+            y: 25,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: '-60px',
+          }}
+          transition={{
+            duration: 0.5,
+            delay: index * 0.05,
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={image}
+              src={image}
+              alt={`Mojoy Records archive ${index + 1}`}
+              initial={{
+                opacity: 0,
+                scale: 1.035,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.985,
+              }}
+              transition={{
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            />
+          </AnimatePresence>
+
+          <div className="mojoy-photo-overlay" />
+
+          <div className="mojoy-photo-index">
+            0{index + 1}
+          </div>
+        </motion.div>
+      ))}
+    </div>
   )
 }
 
@@ -226,9 +333,17 @@ function Home() {
         </div>
 
         <div className="campaign-stamp">
-          <strong>40</strong>
-          <span>YEARS</span>
-          <small>INDEPENDENT</small>
+          <strong>
+            40
+          </strong>
+
+          <span>
+            YEARS
+          </span>
+
+          <small>
+            INDEPENDENT
+          </small>
         </div>
       </section>
 
@@ -263,7 +378,7 @@ function Home() {
         >
           <img
             src={featured.image}
-            alt={featured.title}
+            alt={`${featured.title} by ${featured.artist}`}
           />
 
           <div className="promo-overlay" />
@@ -345,6 +460,34 @@ function Home() {
         </div>
       </section>
 
+      <section
+        className="gallery-section"
+        id="gallery"
+      >
+        <div className="gallery-heading">
+          <div>
+            <span>
+              03 / GALLERY
+            </span>
+
+            <h2>
+              INSIDE
+              <br />
+              MOJOY.
+            </h2>
+          </div>
+
+          <p>
+            Moments, performances and images from the Mojoy Records
+            story.
+          </p>
+        </div>
+
+        <AnimatedPhotoWall
+          images={galleryImages}
+        />
+      </section>
+
       <section className="legacy-banner">
         <div className="legacy-number">
           40
@@ -381,7 +524,7 @@ function Home() {
       >
         <div className="physical-store-copy">
           <span>
-            03 / PHYSICAL MUSIC
+            04 / PHYSICAL MUSIC
           </span>
 
           <h2>
@@ -416,7 +559,7 @@ function Home() {
       <section className="booking-strip">
         <div>
           <span>
-            04 / MANAGEMENT
+            05 / MANAGEMENT
           </span>
 
           <h2>
@@ -458,6 +601,10 @@ function Home() {
 
             <ScrollLink target="catalog">
               Catalog
+            </ScrollLink>
+
+            <ScrollLink target="gallery">
+              Gallery
             </ScrollLink>
 
             <ScrollLink target="physical">

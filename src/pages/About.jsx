@@ -8,14 +8,25 @@ import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import '../about.css'
 
+const asset = (path) =>
+  `${import.meta.env.BASE_URL}images/${path}`
+
 const artists = [
   {
     name: 'Phillip Brooks',
     role: 'Mojoy Records Artist',
     release: 'Sunrise Lake View',
     link: 'https://unitedmasters.com/m/sunrise-lake-view',
-    image:
-      'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=90',
+    image: asset('releases/sunrise-lake-view.jpg'),
+    comingSoon: false,
+  },
+  {
+    name: 'NEW MOJOY ARTIST',
+    role: 'Mojoy Records Artist',
+    release: 'Music Coming Soon',
+    link: null,
+    image: asset('artists/artist-02.jpg'),
+    comingSoon: true,
   },
 ]
 
@@ -24,6 +35,86 @@ const introWords = [
   'STILL INDEPENDENT',
   'DETROIT ROOTED',
 ]
+
+function ArtistCard({ artist }) {
+  const cardContent = (
+    <>
+      <div className="artist-image">
+        <img
+          src={artist.image}
+          alt={artist.name}
+        />
+
+        {!artist.comingSoon && (
+          <div className="artist-arrow">
+            <ArrowUpRight size={22} />
+          </div>
+        )}
+
+        {artist.comingSoon && (
+          <div className="artist-coming-badge">
+            MUSIC COMING SOON
+          </div>
+        )}
+      </div>
+
+      <div className="artist-nameplate">
+        <strong>
+          {artist.name}
+        </strong>
+
+        <span>
+          {artist.role}
+        </span>
+
+        <small>
+          {artist.release}
+        </small>
+      </div>
+    </>
+  )
+
+  const animationProps = {
+    initial: {
+      opacity: 0,
+      y: 25,
+    },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+    },
+    viewport: {
+      once: true,
+    },
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }
+
+  if (artist.link) {
+    return (
+      <motion.a
+        href={artist.link}
+        target="_blank"
+        rel="noreferrer"
+        className="artist-profile"
+        {...animationProps}
+      >
+        {cardContent}
+      </motion.a>
+    )
+  }
+
+  return (
+    <motion.div
+      className="artist-profile artist-profile-static"
+      {...animationProps}
+    >
+      {cardContent}
+    </motion.div>
+  )
+}
 
 function About() {
   const [wordIndex, setWordIndex] = useState(0)
@@ -197,21 +288,38 @@ function About() {
         </div>
 
         <div className="ceo-layout">
-          <div className="ceo-photo-placeholder">
-            <div className="ceo-placeholder-inner">
+          <motion.div
+            className="ceo-photo"
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+          >
+            <img
+              src={asset('team/ceo.jpg')}
+              alt="Mojoy Records CEO"
+            />
+
+            <div className="ceo-photo-label">
               <span>
-                MOJOY RECORDS
+                MOJOY RECORDS 
               </span>
 
-              <strong>
-                CEO
-              </strong>
-
-              <p>
-                OFFICIAL PORTRAIT COMING SOON
-              </p>
+              <span>
+                FOUNDER / CEO
+              </span>
             </div>
-          </div>
+          </motion.div>
 
           <div className="ceo-information">
             <span className="about-kicker">
@@ -233,14 +341,14 @@ function About() {
               </p>
 
               <p>
-                This section will introduce the background, leadership
-                and vision of Mojoy Records&apos; CEO once the official
-                biography and portrait are provided by the label.
+                The label continues its next chapter through its
+                catalog, artists, physical releases and direct
+                connection with listeners.
               </p>
             </div>
 
             <div className="ceo-note">
-              OFFICIAL BIOGRAPHY IN DEVELOPMENT
+              MOJOY RECORDS / DETROIT, MICHIGAN
             </div>
           </div>
         </div>
@@ -265,49 +373,10 @@ function About() {
 
         <div className="artist-roster">
           {artists.map((artist) => (
-            <motion.a
+            <ArtistCard
               key={artist.name}
-              href={artist.link}
-              target="_blank"
-              rel="noreferrer"
-              className="artist-profile"
-              initial={{
-                opacity: 0,
-                y: 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-            >
-              <div className="artist-image">
-                <img
-                  src={artist.image}
-                  alt={artist.name}
-                />
-
-                <div className="artist-arrow">
-                  <ArrowUpRight size={22} />
-                </div>
-              </div>
-
-              <div className="artist-nameplate">
-                <strong>
-                  {artist.name}
-                </strong>
-
-                <span>
-                  {artist.role}
-                </span>
-
-                <small>
-                  {artist.release}
-                </small>
-              </div>
-            </motion.a>
+              artist={artist}
+            />
           ))}
 
           <div className="artist-coming-soon">
@@ -317,22 +386,21 @@ function About() {
 
             <div>
               <strong>
-                ROSTER
+                MORE
               </strong>
 
               <strong>
-                COMING
+                MUSIC
               </strong>
 
               <strong>
-                SOON.
+                AHEAD.
               </strong>
             </div>
 
             <p>
-              Additional Mojoy Records artists and catalog
-              information will be added as the official roster is
-              finalized.
+              Follow Mojoy Records as new releases, artists and
+              catalog additions continue to be announced.
             </p>
           </div>
         </div>
