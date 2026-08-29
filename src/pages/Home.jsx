@@ -297,10 +297,10 @@ function Home() {
 
       <section className="campaign-hero">
         <div className="campaign-image">
-          <img
-            src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1800&q=90"
-            alt="Live music performance"
-          />
+         <img
+  src={`${import.meta.env.BASE_URL}images/branding/home-hero.jpg`}
+  alt="Mojoy Records"
+/>
 
           <div className="campaign-shade" />
         </div>
@@ -577,70 +577,80 @@ function Home() {
           <ArrowUpRight size={19} />
         </Link>
       </section>
+<footer className="site-footer">
+  <div className="footer-main-row">
+    <div className="footer-logo">
+      <strong>
+        MOJOY
+      </strong>
 
-      <footer className="site-footer">
-        <div className="footer-logo">
-          <strong>
-            MOJOY
-          </strong>
+      <span>
+        RECORDS
+      </span>
+    </div>
 
-          <span>
-            RECORDS
-          </span>
-        </div>
+    <div className="footer-columns">
+      <div>
+        <span>
+          EXPLORE
+        </span>
 
-        <div className="footer-columns">
-          <div>
-            <span>
-              EXPLORE
-            </span>
+        <ScrollLink target="releases">
+          Music
+        </ScrollLink>
 
-            <ScrollLink target="releases">
-              Music
-            </ScrollLink>
+        <ScrollLink target="catalog">
+          Catalog
+        </ScrollLink>
 
-            <ScrollLink target="catalog">
-              Catalog
-            </ScrollLink>
+        <ScrollLink target="gallery">
+          Gallery
+        </ScrollLink>
 
-            <ScrollLink target="gallery">
-              Gallery
-            </ScrollLink>
+        <ScrollLink target="physical">
+          Physical
+        </ScrollLink>
+      </div>
 
-            <ScrollLink target="physical">
-              Physical
-            </ScrollLink>
-          </div>
+      <div>
+        <span>
+          COMPANY
+        </span>
 
-          <div>
-            <span>
-              COMPANY
-            </span>
+        <Link to="/about">
+          About
+        </Link>
 
-            <Link to="/about">
-              About
-            </Link>
+        <Link to="/booking">
+          Management
+        </Link>
 
-            <Link to="/booking">
-              Management
-            </Link>
+        <Link to="/booking">
+          CD Orders
+        </Link>
+      </div>
+    </div>
+  </div>
 
-            <Link to="/booking">
-              CD Orders
-            </Link>
-          </div>
-        </div>
+  <div className="footer-bottom">
+    <span>
+      DETROIT, MICHIGAN
+    </span>
 
-        <div className="footer-bottom">
-          <span>
-            DETROIT, MICHIGAN
-          </span>
+    <span>
+      © 2026 MOJOY RECORDS
+    </span>
 
-          <span>
-            © 2026 MOJOY RECORDS
-          </span>
-        </div>
-      </footer>
+    <a
+      href="https://techuvo.dev"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="techuvo-credit"
+    >
+      WEBSITE BY TECHUVO
+    </a>
+  </div>
+</footer>
     </main>
   )
 }

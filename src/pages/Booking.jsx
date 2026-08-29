@@ -1,191 +1,134 @@
-import { ArrowLeft, ArrowUpRight, Disc3 } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { ArrowRight, Mail, Phone } from 'lucide-react'
+import Navbar from '../components/Navbar'
 import '../styles.css'
 
 function Booking() {
+  const [inquiryType, setInquiryType] = useState('Management')
+
   return (
-    <main className="inquiry-page">
-      <header className="inquiry-nav">
-        <Link className="brand" to="/">
-          MOJOY
-          <span>RECORDS</span>
-        </Link>
+    <main className="simple-contact-page">
+      <Navbar active="booking" />
 
-        <Link className="return-link" to="/">
-          <ArrowLeft size={16} />
-          Return Home
-        </Link>
-      </header>
+      <section className="simple-contact">
+        <div className="simple-contact-header">
+          <span>CONTACT / MOJOY RECORDS</span>
 
-      <section className="inquiry-hero">
-        <div className="inquiry-index">
-          05 / CONTACT
-        </div>
+          <h1>CONTACT MOJOY RECORDS</h1>
 
-        <motion.div
-          className="inquiry-heading"
-          initial={{ opacity: 0, y: 45 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          <span className="small-label">
-            Mojoy Records / Detroit
-          </span>
-
-          <h1>
-            Let’s make
-            <em>something</em>
-            happen.
-          </h1>
-        </motion.div>
-
-        <div className="inquiry-side-copy">
           <p>
-            Management inquiries, bookings, appearances,
-            partnerships and physical music orders.
+            For management, bookings, appearances, partnerships,
+            media inquiries and physical music orders.
           </p>
+        </div>
 
-          <span>
-            DETROIT, MICHIGAN
-          </span>
+        <div className="simple-contact-layout">
+          <aside className="simple-contact-info">
+            <div>
+              <span>EMAIL</span>
+
+              <a href="mailto:mojoyrecords@gmail.com">
+                <Mail size={17} />
+                mojoyrecords@gmail.com
+              </a>
+            </div>
+
+            <div>
+              <span>PHONE</span>
+
+              <a href="tel:2488362668">
+                <Phone size={17} />
+                (248) 836-2668
+              </a>
+            </div>
+
+            <div className="simple-contact-location">
+              <span>LOCATION</span>
+              <p>Detroit, Michigan</p>
+            </div>
+          </aside>
+
+          <form
+            className="simple-contact-form"
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <div className="simple-form-row">
+              <label>
+                Name
+                <input
+                  type="text"
+                  placeholder="Your full name"
+                  required
+                />
+              </label>
+
+              <label>
+                Email
+                <input
+                  type="email"
+                  placeholder="name@email.com"
+                  required
+                />
+              </label>
+            </div>
+
+            <div className="simple-form-row">
+              <label>
+                Phone
+                <input
+                  type="tel"
+                  placeholder="(000) 000-0000"
+                />
+              </label>
+
+              <label>
+                Inquiry Type
+                <select
+                  value={inquiryType}
+                  onChange={(event) =>
+                    setInquiryType(event.target.value)
+                  }
+                >
+                  <option>Management</option>
+                  <option>Artist Booking</option>
+                  <option>Event / Appearance</option>
+                  <option>CD Order</option>
+                  <option>Media / Interview</option>
+                  <option>Partnership</option>
+                  <option>General Inquiry</option>
+                </select>
+              </label>
+            </div>
+
+            <label className="simple-message-field">
+              Message
+
+              <textarea
+                rows="7"
+                placeholder={
+                  inquiryType === 'CD Order'
+                    ? 'Include the release title, quantity and any other order details...'
+                    : 'Tell us about your inquiry...'
+                }
+                required
+              />
+            </label>
+
+            <button
+              type="submit"
+              className="simple-contact-submit"
+            >
+              SEND INQUIRY
+              <ArrowRight size={19} />
+            </button>
+
+            <p className="simple-contact-note">
+              For CD orders, select “CD Order” and include the release
+              title and desired quantity.
+            </p>
+          </form>
         </div>
       </section>
-
-      <section className="inquiry-body">
-        <div className="inquiry-selector">
-          <span>SELECT YOUR INQUIRY</span>
-
-          <div className="selector-options">
-            <button className="active">
-              Management
-            </button>
-
-            <button>
-              Booking
-            </button>
-
-            <button>
-              CD Order
-            </button>
-
-            <button>
-              Partnership
-            </button>
-          </div>
-        </div>
-
-        <form
-          className="mojoy-form"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <div className="form-row">
-            <label>
-              <span>01</span>
-              Your Name
-              <input
-                type="text"
-                placeholder="Enter your full name"
-              />
-            </label>
-
-            <label>
-              <span>02</span>
-              Email Address
-              <input
-                type="email"
-                placeholder="name@email.com"
-              />
-            </label>
-          </div>
-
-          <div className="form-row">
-            <label>
-              <span>03</span>
-              Phone
-              <input
-                type="tel"
-                placeholder="(000) 000-0000"
-              />
-            </label>
-
-            <label>
-              <span>04</span>
-              Inquiry Type
-              <select defaultValue="">
-                <option value="" disabled>
-                  Select inquiry
-                </option>
-
-                <option>Artist Booking</option>
-                <option>Management</option>
-                <option>Event / Appearance</option>
-                <option>CD Order</option>
-                <option>Media / Interview</option>
-                <option>Business Partnership</option>
-                <option>General Inquiry</option>
-              </select>
-            </label>
-          </div>
-
-          <label className="message-field">
-            <span>05</span>
-            Tell Us More
-
-            <textarea
-              rows="5"
-              placeholder="Tell the Mojoy Records team about your inquiry..."
-            />
-          </label>
-
-          <button className="submit-inquiry" type="submit">
-            <span>Send Inquiry</span>
-            <ArrowUpRight size={22} />
-          </button>
-        </form>
-
-        <aside className="physical-order-note">
-          <Disc3 size={31} strokeWidth={1.3} />
-
-          <div>
-            <span className="small-label">
-              Physical Editions
-            </span>
-
-            <h2>
-              Looking for
-              <br />
-              a CD?
-            </h2>
-
-            <p>
-              Select releases from the Mojoy Records catalog
-              remain available as physical copies.
-            </p>
-
-            <p className="order-instruction">
-              Choose <strong>CD Order</strong> in the inquiry
-              form and include the release name and desired
-              quantity.
-            </p>
-          </div>
-        </aside>
-      </section>
-
-      <footer className="inquiry-footer">
-        <div>
-          <span>MOJOY RECORDS</span>
-          <span>DETROIT / MICHIGAN</span>
-        </div>
-
-        <div>
-          <span>INDEPENDENT MUSIC</span>
-          <span>© 2026</span>
-        </div>
-      </footer>
     </main>
   )
 }
