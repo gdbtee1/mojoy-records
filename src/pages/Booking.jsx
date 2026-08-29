@@ -17,7 +17,7 @@ function Booking() {
           <h1>CONTACT MOJOY RECORDS</h1>
 
           <p>
-            For management, bookings, appearances, partnerships,
+            For management, bookings, appearances, A&R,
             media inquiries and physical music orders.
           </p>
         </div>
@@ -44,6 +44,7 @@ function Booking() {
 
             <div className="simple-contact-location">
               <span>LOCATION</span>
+
               <p>Detroit, Michigan</p>
             </div>
           </aside>
@@ -55,6 +56,7 @@ function Booking() {
             <div className="simple-form-row">
               <label>
                 Name
+
                 <input
                   type="text"
                   placeholder="Your full name"
@@ -64,6 +66,7 @@ function Booking() {
 
               <label>
                 Email
+
                 <input
                   type="email"
                   placeholder="name@email.com"
@@ -75,6 +78,7 @@ function Booking() {
             <div className="simple-form-row">
               <label>
                 Phone
+
                 <input
                   type="tel"
                   placeholder="(000) 000-0000"
@@ -83,6 +87,7 @@ function Booking() {
 
               <label>
                 Inquiry Type
+
                 <select
                   value={inquiryType}
                   onChange={(event) =>
@@ -94,7 +99,7 @@ function Booking() {
                   <option>Event / Appearance</option>
                   <option>CD Order</option>
                   <option>Media / Interview</option>
-                  <option>Partnership</option>
+                  <option>A&R</option>
                   <option>General Inquiry</option>
                 </select>
               </label>
@@ -123,8 +128,8 @@ function Booking() {
             </button>
 
             <p className="simple-contact-note">
-              For CD orders, select “CD Order” and include the release
-              title and desired quantity.
+              For CD orders, select “CD Order” and include the
+              release title and desired quantity.
             </p>
           </form>
         </div>
