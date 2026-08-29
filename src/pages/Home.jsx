@@ -297,10 +297,10 @@ function Home() {
 
       <section className="campaign-hero">
         <div className="campaign-image">
-         <img
-  src={`${import.meta.env.BASE_URL}images/branding/home-hero.jpg`}
-  alt="Mojoy Records"
-/>
+          <img
+            src={`${import.meta.env.BASE_URL}images/branding/home-hero.jpg`}
+            alt="Mojoy Records"
+          />
 
           <div className="campaign-shade" />
         </div>
@@ -518,11 +518,40 @@ function Home() {
         </div>
       </section>
 
+      {/* ========================================
+          PHYSICAL MUSIC
+      ======================================== */}
+
       <section
-        className="physical-store"
+        className="physical-store physical-store-background"
         id="physical"
+        style={{
+          gridTemplateColumns: '1fr',
+          position: 'relative',
+          backgroundImage: `
+            linear-gradient(
+              90deg,
+              rgba(17, 16, 15, 0.88) 0%,
+              rgba(17, 16, 15, 0.70) 45%,
+              rgba(17, 16, 15, 0.30) 100%
+            ),
+            url("https://images.unsplash.com/photo-1629717754179-3bf6795a99e6?auto=format&fit=crop&w=1800&q=90")
+          `,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
-        <div className="physical-store-copy">
+        <div
+          className="physical-store-copy"
+          style={{
+            position: 'relative',
+            zIndex: 2,
+            background: 'transparent',
+            color: 'var(--cream-light)',
+            minHeight: '650px',
+          }}
+        >
           <span>
             04 / PHYSICAL MUSIC
           </span>
@@ -542,17 +571,14 @@ function Home() {
           <Link
             to="/booking"
             className="outlined-button"
+            style={{
+              color: 'var(--cream-light)',
+              borderColor: 'var(--cream-light)',
+            }}
           >
             ORDER A CD
             <ArrowRight size={18} />
           </Link>
-        </div>
-
-        <div className="physical-store-image">
-          <img
-            src="https://images.unsplash.com/photo-1461360228754-6e81c478b882?auto=format&fit=crop&w=1500&q=90"
-            alt="Music collection"
-          />
         </div>
       </section>
 
@@ -577,80 +603,81 @@ function Home() {
           <ArrowUpRight size={19} />
         </Link>
       </section>
-<footer className="site-footer">
-  <div className="footer-main-row">
-    <div className="footer-logo">
-      <strong>
-        MOJOY
-      </strong>
 
-      <span>
-        RECORDS
-      </span>
-    </div>
+      <footer className="site-footer">
+        <div className="footer-main-row">
+          <div className="footer-logo">
+            <strong>
+              MOJOY
+            </strong>
 
-    <div className="footer-columns">
-      <div>
-        <span>
-          EXPLORE
-        </span>
+            <span>
+              RECORDS
+            </span>
+          </div>
 
-        <ScrollLink target="releases">
-          Music
-        </ScrollLink>
+          <div className="footer-columns">
+            <div>
+              <span>
+                EXPLORE
+              </span>
 
-        <ScrollLink target="catalog">
-          Catalog
-        </ScrollLink>
+              <ScrollLink target="releases">
+                Music
+              </ScrollLink>
 
-        <ScrollLink target="gallery">
-          Gallery
-        </ScrollLink>
+              <ScrollLink target="catalog">
+                Catalog
+              </ScrollLink>
 
-        <ScrollLink target="physical">
-          Physical
-        </ScrollLink>
-      </div>
+              <ScrollLink target="gallery">
+                Gallery
+              </ScrollLink>
 
-      <div>
-        <span>
-          COMPANY
-        </span>
+              <ScrollLink target="physical">
+                Physical
+              </ScrollLink>
+            </div>
 
-        <Link to="/about">
-          About
-        </Link>
+            <div>
+              <span>
+                COMPANY
+              </span>
 
-        <Link to="/booking">
-          Management
-        </Link>
+              <Link to="/about">
+                About
+              </Link>
 
-        <Link to="/booking">
-          CD Orders
-        </Link>
-      </div>
-    </div>
-  </div>
+              <Link to="/booking">
+                Management
+              </Link>
 
-  <div className="footer-bottom">
-    <span>
-      DETROIT, MICHIGAN
-    </span>
+              <Link to="/booking">
+                CD Orders
+              </Link>
+            </div>
+          </div>
+        </div>
 
-    <span>
-      © 2026 MOJOY RECORDS
-    </span>
+        <div className="footer-bottom">
+          <span>
+            DETROIT, MICHIGAN
+          </span>
 
-    <a
-      href="https://techuvo.dev"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="techuvo-credit"
-    >
-      WEBSITE BY TECHUVO
-    </a>
-  </div>
-</footer>
+          <span>
+            © 2026 MOJOY RECORDS
+          </span>
+
+          <a
+            href="https://techuvo.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="techuvo-credit"
+          >
+            WEBSITE BY TECHUVO
+          </a>
+        </div>
+      </footer>
     </main>
   )
 }
